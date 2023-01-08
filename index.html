@@ -5,6 +5,62 @@
 
     <script>
       
+      function game(){
+        let = 0;
+        for (let i=0; i<5;i++){
+          const computerSelection = getComputerChoice();
+          console.log(playRound(playerSelection, computerSelection));        }
+      }
+
+      function playRound(playerSelection, computerSelection){
+        if(playerSelection=="paper"){
+          if(computerSelection=="paper"){
+            console.log("Tied game");
+          }
+          if(computerSelection=="rock"){
+            console.log("You won! Paper beats Rock");
+          }
+          if(computerSelection=="scissors"){
+            console.log("You lose! scissors beats paper");
+          }
+        }
+
+        if(playerSelection=="rock"){
+          if(computerSelection=="paper"){
+            console.log("You lose! paper beats rock");
+          }
+          if(computerSelection=="rock"){
+            console.log("Tied Game");
+          }
+          if(computerSelection=="scissors"){
+            console.log("You won! rock beats scissors");
+          }
+        }
+
+        if(playerSelection=="scissors"){
+          if(computerSelection=="paper"){
+            console.log("You won! scissors beats paper");
+          }
+          if(computerSelection=="rock"){
+            console.log("You lose! rock beats scissors");
+          }
+          if(computerSelection=="scissors"){
+            console.log("Tied Game");
+          }
+        }
+
+
+      }
+
+      function getComputerChoice() {
+        const choices = ['rock', 'paper', 'scissors'];
+        return choices[Math.floor(Math.random() * choices.length)];
+      }
+
+
+      const playerSelection = "paper";
+      const computerSelection = getComputerChoice();
+      game();      
     </script>
 
   </body>
