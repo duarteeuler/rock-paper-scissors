@@ -2,14 +2,30 @@
 <html>
   <head></head>
   <body>
-    <script>   
-      function game(){
-        let = 0;
-        for (let i=0; i<5;i++){
-          const computerSelection = getComputerChoice();
-          let playerSelection = prompt("Paper, scissors or Rock?");
-          console.log(playRound(playerSelection, computerSelection));        }
+  
+    <script>
+
+      let playerSelection = "";
+      let computerSelection = getComputerChoice();
+
+      // Set 3 functions to call by eventListener and define playerSelection
+      function setChoiceRock(){
+        playerSelection="rock";
+        console.log(playRound(playerSelection, computerSelection));
+        computerSelection = getComputerChoice();
       }
+      function setChoicePaper(){
+        playerSelection="paper";
+        console.log(playRound(playerSelection, computerSelection));
+        computerSelection = getComputerChoice();
+      }
+      function setChoiceScissors(){
+        playerSelection="scissors";
+        console.log(playRound(playerSelection, computerSelection));
+        computerSelection = getComputerChoice();
+      }
+      
+      // Compares playerSelection with computerSelection
       function playRound(playerSelection, computerSelection){
         if(playerSelection=="paper"){
           if(computerSelection=="paper"){
@@ -45,12 +61,32 @@
           }
         }
       }
+
+      // Create a button element
+      const button1 = document.createElement('button');
+      const button2 = document.createElement('button');
+      const button3 = document.createElement('button');
+      // Set the button text
+      button1.innerText = "Paper";
+      button2.innerText = "Rock";
+      button3.innerText = "Scissors";
+
+      // Attach the "click" event to button
+      
+      button1.addEventListener("click", setChoicePaper);
+      button2.addEventListener("click", setChoiceRock);
+      button3.addEventListener("click", setChoiceScissors);
+
+      // Putting button to HTML
+
+      document.body.appendChild(button1);
+      document.body.appendChild(button2);
+      document.body.appendChild(button3);
+
       function getComputerChoice() {
         const choices = ['rock', 'paper', 'scissors'];
         return choices[Math.floor(Math.random() * choices.length)];
-      }
-      const computerSelection = getComputerChoice();
-      game();      
+      } 
     </script>
   </body>
 </html>
