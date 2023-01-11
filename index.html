@@ -7,6 +7,11 @@
 
       let playerSelection = "";
       let computerSelection = getComputerChoice();
+      let scorePlayer = 0;
+      let scoreComputer = 0;
+
+      
+
 
       // Set 3 functions to call by eventListener and define playerSelection
       function setChoiceRock(){
@@ -30,35 +35,60 @@
         if(playerSelection=="paper"){
           if(computerSelection=="paper"){
             console.log("Tied game");
+            box.innerHTML="TIED GAME!<br>"+scorePlayer+"x"+scoreComputer;
           }
           if(computerSelection=="rock"){
             console.log("You won! Paper beats Rock");
+            scorePlayer++;
+            box.innerHTML="You won! Paper beats Rock<br>"+scorePlayer+"x"+scoreComputer;
+            
           }
           if(computerSelection=="scissors"){
             console.log("You lose! scissors beats paper");
+            scoreComputer++;
+            box.innerHTML="You lose! scissors beats paper<br>"+scorePlayer+"x"+scoreComputer;
           }
         }
         if(playerSelection=="rock"){
           if(computerSelection=="paper"){
             console.log("You lose! paper beats rock");
+            scoreComputer++;
+            box.innerHTML="You lose! paper beats rock<br>"+scorePlayer+"x"+scoreComputer;
           }
           if(computerSelection=="rock"){
             console.log("Tied Game");
+            box.innerHTML="Tied Game<br>"+scorePlayer+"x"+scoreComputer;
           }
           if(computerSelection=="scissors"){
             console.log("You won! rock beats scissors");
+            scorePlayer++;
+            box.innerHTML="You won! rock beats scissors<br>"+scorePlayer+"x"+scoreComputer;
+            
           }
         }
         if(playerSelection=="scissors"){
           if(computerSelection=="paper"){
             console.log("You won! scissors beats paper");
+            scorePlayer++;
+            box.innerHTML="You won! scissors beats paper<br>"+scorePlayer+"x"+scoreComputer;
+            
           }
           if(computerSelection=="rock"){
             console.log("You lose! rock beats scissors");
+            scoreComputer++;
+            box.innerHTML="You lose! rock beats scissors<br>"+scorePlayer+"x"+scoreComputer;
+            
           }
           if(computerSelection=="scissors"){
             console.log("Tied Game");
+            box.innerHTML="Tied Game<br>"+scorePlayer+"x"+scoreComputer;
           }
+        }
+        if(scorePlayer==5){
+          box.innerHTML="YOU WIN!!!<br>"+scorePlayer+"x"+scoreComputer;    
+        }
+        if(scoreComputer==5){
+          box.innerHTML="computer wins!!<br>"+scorePlayer+"x"+scoreComputer;
         }
       }
 
@@ -83,6 +113,11 @@
       document.body.appendChild(button2);
       document.body.appendChild(button3);
 
+      const box = document.createElement("div");
+      box.id = "box";
+      document.body.appendChild(box);
+
+      
       function getComputerChoice() {
         const choices = ['rock', 'paper', 'scissors'];
         return choices[Math.floor(Math.random() * choices.length)];
